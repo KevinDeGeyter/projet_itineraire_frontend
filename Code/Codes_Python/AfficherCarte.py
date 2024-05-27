@@ -1,5 +1,6 @@
 import folium
 from neo4j import GraphDatabase
+import subprocess
 
 # Connexion à la base de données Neo4j
 uri = "bolt://127.0.0.1:7687"
@@ -49,4 +50,8 @@ for i, (cluster_name, poi_data) in enumerate(clusters_data.items()):
         ).add_to(map)
 
 # Sauvegarder la carte dans un fichier HTML
-map.save("clusters_map_with_tooltips.html")
+map_file = "clusters_map_with_tooltips.html"
+map.save(map_file)
+
+# Copier le fichier HTML dans le répertoire /var/www/html/
+subprocess.run(["sudo", "cp", map_file, "/var/www/html/"])

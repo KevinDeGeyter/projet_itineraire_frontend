@@ -1,5 +1,6 @@
 import argparse
 import psycopg2
+import subprocess
 from geopy.distance import geodesic
 from neo4j import GraphDatabase
 from sklearn.cluster import KMeans
@@ -89,7 +90,7 @@ def create_graph(tx):
         cluster_name = f"Cluster_{clusters[i]}"
         tx.run(
             "CREATE (poi:POI {label_fr: $label_fr, latitude: $latitude, longitude: $longitude, poi_type: $poi_type})",
-            label_fr=label_fr, latitude=latitude, longitude=longitude, poi_type=poi_type
+              label_fr=label_fr, latitude=latitude, longitude=longitude, poi_type=poi_type
         )
         tx.run(
             "MATCH (poi:POI {label_fr: $label_fr}), (cluster:Cluster {name: $cluster_name}) "
@@ -104,3 +105,5 @@ with driver.session() as session:
 # Fermeture du curseur et de la connexion à la base de données PostgreSQL
 cursor.close()
 conn.close()
+# Exécuter le script AfficherCarte.py
+subprocess.run(["python3", "AfficherCarte.py"])

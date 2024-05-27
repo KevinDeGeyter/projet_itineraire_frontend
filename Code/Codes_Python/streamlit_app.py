@@ -33,7 +33,7 @@ poi_types = st.multiselect("Types de points d'intérêt :", extended_poi_types, 
 if st.button("Exécuter la requête"):
     # Construction de la commande à exécuter
     poi_types_str = " ".join(poi_types)
-    command = f"python3 script.py --latitude {latitude} --longitude {longitude} --poi_types {poi_types_str}"
+    command = f"python3 Creation_Clusters.py --latitude {latitude} --longitude {longitude} --poi_types {poi_types_str}"
 
     # Exécution de la commande dans un sous-processus
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

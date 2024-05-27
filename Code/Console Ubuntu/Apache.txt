@@ -1,0 +1,11 @@
+sudo apt update
+
+sudo apt install apache2 -y
+
+sudo cp clusters_map_with_tooltips.html /var/www/html/
+
+sudo chmod 644 /var/www/html/clusters_map_with_tooltips.html
+
+curl ifconfig.me
+
+--> http://IP/clusters_map_with_tooltips.html

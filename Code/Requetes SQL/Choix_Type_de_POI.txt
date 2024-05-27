@@ -1,0 +1,6 @@
+SELECT dt.label_fr, dt.latitude, dt.longitude, tp.type
+FROM datatourisme dt
+JOIN liaison_datatourisme_types_de_poi ldtp ON dt.id = ldtp.id_datatourisme
+JOIN types_de_poi tp ON ldtp.id_type_de_poi = tp.id
+WHERE tp.type = 'Jeunesse' OR tp.type = 'Sport'
+GROUP BY dt.label_fr, dt.latitude, dt.longitude, tp.type;

@@ -1,0 +1,4 @@
+docker container run -p 7474:7474 -p 7687:7687 datascientest/neo4j
+
+Ensuite accessible depuis 
+http://99.81.159.66:7474/browser/
